@@ -1,7 +1,7 @@
 # Rockpedia : Surveillance
 
-<u>3. Rockpedia : Surveillance</u>
-			 <u>3.1. Spring Actuator et Prometheus</u>
+ 		<u>3. Rockpedia : Surveillance</u>
+ 			<u>3.1. Spring Actuator et Prometheus</u>
  			<u>3.2. Spring Boot Admin</u>
 
 Nous voulons toujours savoir si notre application fonctionne correctement, une fois lancée. C'est ce que permettent les outils que nous allons voir.
