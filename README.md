@@ -48,7 +48,7 @@ Vous devriez voir apparaître cette page :
 
 
 
-## 3. [Swagger](aludwig57.github.io/swagger)
+## 3. [Swagger](/swagger)
 
 Swagger est la documentation de l'application. Elle est accessible en local à l'adresse [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) et en ligne : [https://groupe1.m2gi.win/swagger-ui.html
 
