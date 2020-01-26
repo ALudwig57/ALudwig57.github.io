@@ -1,0 +1,100 @@
+# Rockpedia : Guide du collaborateur
+
+ 		<u>2. Rockpedia : Guide du collaborateur</u>
+ 			<u>2.1. Swagger</u>
+ 			<u>2.2. Git et Github</u>
+ 			<u>2.3. Jenkins</u>
+ 			<u>2.4. Tests</u>
+ 			<u>2.5. SonarQube</u>
+
+## 1. [Swagger](/swagger)
+
+Swagger est la documentation de l'application. Elle est accessible en local à l'adresse [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) et en ligne : https://groupe1.m2gi.win/swagger-ui.html ou [https://aludwig57.github.io/swagger/](https://groupe1.m2gi.win/swagger-ui.html)
+
+## 2. Git et GitHub
+
+Avant de commencer à coder, il faut créer une nouvelle branche, `feature/nombranche` pour ajouter une fonction ou `fix/nombranche` pour corriger un bug :
+
+> `git branch feature/nombranche`
+
+On bascule sur cette branche :
+
+> `git checkout feature/nombranche`
+
+Périodiquement, on enregistre (commit) notre travail :
+
+- On ajoute les modifications (et les fichiers créés) :
+
+> `git add .`
+
+- On commit les changements (plus fun d'utiliser les [gitmojis](https://gitmoji.carloscuesta.me/) pour bien identifier les changements) :
+
+> `git commit -m "label commit"
+
+Après plusieurs commits, on peut push les changements sur GitHub :
+
+> `git push`
+
+A chaque push, un build Jenkins est lancé automatiquement, mais on peut aussi en lancer un manuellement, comme ci-après.
+
+
+## 3. Jenkins
+
+Pour éviter les phrases du type "...mais ça fonctionne sur ma machine", on fait de l'intégration continue : On fait compiler le code sur une machine autre que les postes depuis le dépot GitHub.
+
+Cela permet à tous les collaborateurs de voir que les tests passent ou ne passent plus à partir de ce commit, et donc de corriger plus vite les bugs.
+
+### Lancer un build Jenkins
+
+- Rendez vous à l'adresse [https://jenkins.m2gi.win/](https://jenkins.m2gi.win/)
+
+- Connectez vous. Si tout se passe bien, vous devriez arriver sur un écran comme celui-ci :
+
+  ![](../images/jenkinsStart.png)
+
+- Cliquez sur le nom du projet
+
+- Cliquez sur lancer un build
+
+- Vous devriez voir que quelque chose a démarré. Cliquez sur le #nombre à côté du point clignotant.
+
+- Cliquez sur Console Output pour voir le déroulement du build
+
+Si un build ne passe pas, il faut vérifier en local que le build s'effectue correctement : `mvn install`.
+
+## 4. Tests
+
+Les tests sont primordiaux pour s'assurer de la qualité du code. Il en existe deux types :
+
+- ### Les tests <u>unitaires</u>
+
+Les tests unitaires sont chargés de s'assurer que le résultat d'une fonction retourne toujours exactement le même résultat pour une même entrée. Cela permet aussi de vérifier, après modification, que toutes les fonctions existantes apparavant ne sont pas compromises et fonctionnent correctement (tests de non-régression).
+
+Ces tests servent surtout à vérifier si la logique de l'application retourne les résultats escontés, dans notre cas, la fonction de scoring pour le tri des résultats de recherche (`SearchBand.matchScore()`) et la recherche par attribut d'un groupe.
+
+- ### Les test <u>d'intégration</u>
+
+Les tests d'intégration servent à s'assurer que les résultats sont envoyés et sous la bonne forme (bon encodage par exemple, pour éviter les Ã, ©...) pour une entrée donnée.
+
+Dans ce cas, on va plutôt tester que le controleur (`BandController`) renvoye les bons résultats sous la bonne forme, surout pour l'export CSV (Excel).
+
+
+## 5. SonarQube
+
+Une application bien conçue ne doit pas comporter de bugs, être bien testée (bonne couverture de code), avoir peu de redondance de code, et respecter les standards le plus possible. SonarQube permet de surveiller tout cela, et en particulier deux choses :
+
+- la couverture de code : c'est le pourcentage de code qui est testé
+- la dette technique : c'est le temps nécessaire pour corriger les bugs, failles, redondances...
+
+### Accéder à SonarQube
+
+- Rendez vous à l'adresse [https://sonarqube.m2gi.win/dashboard?id=com.example%3Arockpedia](https://sonarqube.m2gi.win/dashboard?id=com.example%3Arockpedia)
+- Vous arrivez sur le tableau de bord de l'application
+
+![](../images/sonarqube.png)
+
+- On peut distinguer les bugs, les failles de sécurités, la dette technique, la couverture de code et afficher le détail de chacun.
+
+### SonarQube en local, dans l'IDE
+
+Il existe un plugin pour Eclipse, Intellij, VS Code pour surveiller la qualité du code en local : SonarLint
