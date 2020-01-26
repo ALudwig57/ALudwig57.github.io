@@ -37,6 +37,8 @@ Après plusieurs commits, on peut push les changements sur GitHub :
 
 A chaque push, un build Jenkins est lancé automatiquement, mais on peut aussi en lancer un manuellement, comme ci-après.
 
+Les changements sont ajoutés sur la branche `develop` puis `master`, par des pull requests.
+
 
 ## 3. Jenkins
 
