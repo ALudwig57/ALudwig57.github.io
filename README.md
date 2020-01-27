@@ -48,3 +48,7 @@ Vous aurez besoin des outils suivants :
 Vous devriez voir apparaître cette page :
 
 ![](images/start.png)
+
+
+
+Pour utiliser l'API, rendez-vous à l'adresse [http://localhost:8080/bands](http://localhost:8080/bands) ou en ligne à l'adresse [https://groupe1.m2gi.win/bands/](https://groupe1.m2gi.win/bands/). Pour plus de détails sur l'API, rendez vous dans le guide du collaborateur en cliquant [ici](/collaboration).
